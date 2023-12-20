@@ -65,7 +65,7 @@ int main()
 #include<stdio.h>
 int main()
 {
-	int a[] = [ 1,2,3,4 );
+	int a[] = [ 1,2,3,4 ];
 	printf("%d", sizeof(a));
 	printf("%d", sizeof(a + 0));
 	printf("%d", sizeof(*a));

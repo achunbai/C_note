@@ -34,3 +34,52 @@
 【输出样例】
 4 1 8
 */
+#include <stdio.h>
+
+int main()
+{
+	// 行最大 --> 遍历行，存最大的列号
+	// 列最小 --> 遍历列，存最小的行号
+	int matrix[6][6], saddlePoint = 0, maxCol, minRow;
+	// 输入矩阵
+	for (int i = 1; i < 6; i++)
+	{
+		for (int j = 1; j < 6; j++)
+		{
+			scanf("%d", &matrix[i][j]);
+		}
+	}
+	for (int i = 1; i < 6; i++)
+	{
+		// 假定每次都是该行中第一列最大
+		maxCol = 1;
+		// 如有更大，则记录列号
+		for (int j = 1; j < 6; j++)
+		{
+			if (matrix[i][j] > matrix[i][maxCol])
+			{
+				maxCol = j;
+			}
+		}
+		// 假定每次都是该列中第一行最小
+		minRow = 1;
+		// 如有更小，记录行号
+		for (int j = 1; j < 6; j++)
+		{
+			if (matrix[j][maxCol] < matrix[minRow][maxCol])
+			{
+				minRow = j;
+			}
+		}
+		// 若列最小就在该行，则输出，鞍点标志位置1
+		if (i == minRow)
+		{
+			printf("%d %d %d", minRow, maxCol, matrix[minRow][maxCol]);
+			saddlePoint = 1;
+		}
+	}
+	if (!saddlePoint)
+	{
+		printf("not found");
+	}
+}

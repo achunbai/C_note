@@ -25,6 +25,7 @@ I U
 U love China. U love Beijing.
 */
 #include <stdio.h>
+#include <string.h>
 
 int main()
 {

@@ -34,28 +34,30 @@ true
 
 int main()
 {
-    char str1[31], str2[31], temp[61], *strs, *strc;
-	int flag = 0;
-	scanf("%s %s", str1, str2);
-	if (strlen(str1) > strlen(str2))
-	{
-		strs = str1;
-		strc = str2;
-	}
-	else
-	{
-		strs = str2;
-		strc = str1;
-	}
-	strcpy(temp, strs);
-	strcat(temp, strs);
-	if (strstr(temp, strc) != NULL)
-	{
-		printf("true");
-	}
-	else
-	{
-		printf("false");
-	}
-	return 0;
+    char str1[31], str2[31], temp[61], *strs, *strc;  // 定义两个字符数组和两个字符指针
+    scanf("%s %s", str1, str2);  // 从标准输入读取两个字符串
+    // 如果str1的长度大于str2的长度，将strs指向str1，将strc指向str2
+    if (strlen(str1) > strlen(str2))
+    {
+        strs = str1;
+        strc = str2;
+    }
+    // 否则，将strs指向str2，将strc指向str1
+    else
+    {
+        strs = str2;
+        strc = str1;
+    }
+    strcpy(temp, strs);  // 使用strcpy函数将strs指向的字符串复制到temp
+    strcat(temp, strs);  // 使用strcat函数将strs指向的字符串追加到temp的末尾
+    // 使用strstr函数检查strc指向的字符串是否是temp的子串
+    if (strstr(temp, strc) != NULL)
+    {
+        printf("true");  // 如果是，打印"true"
+    }
+    else
+    {
+        printf("false");  // 如果不是，打印"false"
+    }
+    return 0;  // 函数返回0，表示程序正常结束
 }

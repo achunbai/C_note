@@ -26,25 +26,25 @@ yes
 
 int main()
 {
-	char dna1[501], dna2[501];
-	double threshold;
-	int count = 0, length;
-	scanf("%lf %s %s", &threshold, dna1, dna2);
-	length = strlen(dna1);
-	for (int i = 0; i < length; i++)
-	{
-		if (dna1[i] == dna2[i])
-		{
-			count++;
-		}
-	}
-	if (threshold <= (double)count / length)
-	{
-		printf("yes");
-	}
-	else
-	{
-		printf("no");
-	}
-	return 0;
+    char dna1[501], dna2[501];  // 定义两个字符数组用于存储输入的DNA序列
+    double threshold;  // 定义一个浮点数用于存储输入的阈值
+    int count = 0, length;  // count用于计算两个DNA序列中相同的碱基对的数量，length用于存储DNA序列的长度
+    scanf("%lf %s %s", &threshold, dna1, dna2);  // 从标准输入读取阈值和两个DNA序列
+    length = strlen(dna1);  // 使用strlen函数计算DNA序列的长度
+    for (int i = 0; i < length; i++)  // 遍历每个碱基对
+    {
+        if (dna1[i] == dna2[i])  // 如果两个DNA序列在同一位置的碱基对相同
+        {
+            count++;  // count增加1
+        }
+    }
+    if (threshold <= (double)count / length)  // 如果阈值小于或等于相同的碱基对的数量除以DNA序列的长度
+    {
+        printf("yes");  // 打印"yes"
+    }
+    else
+    {
+        printf("no");  // 否则，打印"no"
+    }
+    return 0;  // 函数返回0，表示程序正常结束
 }

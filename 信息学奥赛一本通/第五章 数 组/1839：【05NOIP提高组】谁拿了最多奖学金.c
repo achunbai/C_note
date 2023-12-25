@@ -43,23 +43,25 @@ ChenRuiyi
 
 typedef struct Student
 {
-    char name[20];
-    int score1;
-    int score2;
-    char west;
-    char leader;
-    int paper;
-    int scholarship;
+    char name[20];  // 学生姓名
+    int score1;  // 学生的第一科成绩
+    int score2;  // 学生的第二科成绩
+    char west;  // 学生是否是西部学生
+    char leader;  // 学生是否是班级干部
+    int paper;  // 学生的论文数量
+    int scholarship;  // 学生的奖学金总额
 }Stu;
 
 int main()
 {
-    int n, maxindex = 0, sum = 0;
-    scanf("%d", &n);
-    Stu* stu = (Stu*)calloc(n, sizeof(Stu));
-    for (int i = 0; i < n; i++)
+    int n, maxindex = 0, sum = 0;  // n是学生数量，maxindex是获得最多奖学金的学生的索引，sum是所有学生的奖学金总额
+    scanf("%d", &n);  // 从标准输入读取学生数量
+    Stu* stu = (Stu*)calloc(n, sizeof(Stu));  // 动态分配n个Stu类型的内存空间
+    for (int i = 0; i < n; i++)  // 遍历每个学生
     {
+        // 从标准输入读取学生的信息
         scanf("%s %d %d %c %c %d", stu[i].name, &stu[i].score1, &stu[i].score2, &stu[i].leader, &stu[i].west, &stu[i].paper);
+        // 根据学生的信息计算奖学金总额
         if (stu[i].score1 > 80)
         {
             if (stu[i].paper >= 1)
@@ -86,13 +88,16 @@ int main()
         {
             stu[i].scholarship += 850;
         }
+        // 更新获得最多奖学金的学生的索引
         if (stu[maxindex].scholarship < stu[i].scholarship)
         {
             maxindex = i;
         }
+        // 更新所有学生的奖学金总额
         sum += stu[i].scholarship;
     }
+    // 打印获得最多奖学金的学生的姓名和奖学金总额，以及所有学生的奖学金总额
     printf("%s\n%d\n%d\n", stu[maxindex].name, stu[maxindex].scholarship, sum);
-    free(stu);
-    return 0;
+    free(stu);  // 释放动态分配的内存空间
+    return 0;  // 函数返回0，表示程序正常结束
 }

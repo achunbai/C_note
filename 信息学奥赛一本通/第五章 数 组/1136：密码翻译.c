@@ -78,19 +78,21 @@ int main()
 
 int main()
 {
-	char input[81];
-	fgets(input, 81, stdin);
-	for (int i = 0; input[i] != '\0'; i++)
-	{
-		if ((input[i] >= 'A' && input[i] < 'Z') || (input[i] >= 'a' && input[i] < 'z'))
-		{
-			input[i] += 1;
-		}
-		else if (input[i] == 'Z' || input[i] == 'z')
-		{
-			input[i] -= 25;
-		}
-	}
-	printf("%s", input);
-	return 0;
+    char input[81];  // 定义一个字符数组用于存储输入的字符串
+    fgets(input, 81, stdin);  // 从标准输入读取字符串
+    for (int i = 0; input[i] != '\0'; i++)  // 遍历字符串中的每个字符
+    {
+        // 如果字符是A到Y或a到y之间的字母
+        if ((input[i] >= 'A' && input[i] < 'Z') || (input[i] >= 'a' && input[i] < 'z'))
+        {
+            input[i] += 1;  // 字符向后移动一位
+        }
+        // 如果字符是Z或z
+        else if (input[i] == 'Z' || input[i] == 'z')
+        {
+            input[i] -= 25;  // 字符向前移动25位，即变为A或a
+        }
+    }
+    printf("%s", input);  // 打印处理后的字符串
+    return 0;  // 函数返回0，表示程序正常结束
 }

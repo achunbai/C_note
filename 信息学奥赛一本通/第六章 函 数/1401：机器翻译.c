@@ -66,3 +66,77 @@
 
 共计查了5 次词典。
 */
+
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int m, n, tmp, pos = 0, *mem, cnt = 0;
+    scanf("%d %d", &m, &n);
+    mem = (int*)calloc(m, sizeof(int));
+    for (int i = 0; i < n; i++)
+    {
+        int j;
+        scanf("%d", &tmp);
+        for (j = 0; j < m; j++)
+        {
+            if(mem[j] == tmp)
+            {
+                break;
+            }
+        }
+        if(j == m)
+        {
+            mem[pos] = tmp;
+            cnt++;
+            pos++;
+            if(pos == m)
+            {
+                pos = 0;
+            }
+        }
+    }
+    printf("%d\n", cnt);
+    free(mem);
+    return 0;
+}
+*/
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int m, n, tmp, idx = 0, len = 0, *mem, cnt = 0;
+    scanf("%d %d", &m, &n); // 读取内存大小和单词数量
+    mem = (int*)calloc(m, sizeof(int)); // 分配内存空间
+    for (int i = 0; i < n; i++) // 遍历每个单词
+    {
+        int j;
+        scanf("%d", &tmp); // 读取单词
+        for (j = idx; j < idx+len; j++) // 在内存中查找单词
+        {
+            if(mem[j%m] == tmp) // 如果找到单词，跳出循环
+            {
+                break;
+            }
+        }
+        if(j == idx+len) // 如果没有找到单词
+        {
+            mem[(idx+len)%m] = tmp; // 将单词存入内存
+            cnt++; // 增加查询次数
+            if(len == m) // 如果内存已满
+            {
+                idx = (idx + 1) % m; // 移动内存开始位置
+            }
+            else
+            {
+                len++; // 增加内存中的单词数量
+            }
+        }
+    }
+    printf("%d\n", cnt); // 输出查询次数
+    free(mem); // 释放内存空间
+    return 0;
+}

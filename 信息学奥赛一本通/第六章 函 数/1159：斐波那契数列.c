@@ -25,28 +25,33 @@
 // 即fibonacci(n - 1) + fibonacci(n - 2)。
 #include <stdio.h>
 
-int fibonacci(int n)
+// 使用数组存储已经计算过的斐波那契数列的项，避免重复计算
+long long fib[100] = {0, 1, 1}; // 初始化前三项
+
+// 计算斐波那契数列的第n项
+long long fibonacci(int n)
 {
-	if (n == 1)
-	{
-		return 0;
-	}
-	else if (n == 2 || n == 3)
-	{
-		return 1;
-	}
-	else
-	{
-		return fibonacci(n - 1) + fibonacci(n - 2);
-	}
+    // 如果该项已经计算过，直接返回结果
+    if (fib[n] || n < 3)
+    {
+        return fib[n];
+    }
+    // 否则，计算该项并存储结果
+    else
+    {
+        fib[n] = fibonacci(n - 1) + fibonacci(n - 2);
+        return fib[n];
+    }
 }
 
 int main()
 {
-	int n;
-	scanf("%d", &n);
-	printf("%d\n", fibonacci(n));
-	return 0;
+    int n;
+    // 读取输入
+    scanf("%d", &n);
+    // 输出斐波那契数列的第n项
+    printf("%lld\n", fibonacci(n));
+    return 0;
 }
 
 /*

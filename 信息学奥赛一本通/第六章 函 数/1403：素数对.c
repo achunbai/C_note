@@ -27,11 +27,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// 获取小于等于n的所有素数
 int* GetPrime(int n)
 {
+    // 初始化一个大小为n+1的数组，用于标记每个数是否为素数，0表示是素数，1表示不是素数
     int *Prime = (int*)calloc(n + 1, sizeof(int));
+    // 从2开始遍历到n
     for (int i = 2; i <= n; i++)
     {
+        // 将i的倍数全部标记为非素数
         for (int j = i + i; j <= n; j += i)
         {
             if(!Prime[j])
@@ -40,20 +44,27 @@ int* GetPrime(int n)
             }
         }
     }
+    // 返回标记数组
     return Prime;
 }
 
 int main()
 {
-    int n, *Prime = GetPrime(10000);
+    int n;
+    // 获取小于等于10000的所有素数
+    int *Prime = GetPrime(10000);
+    // 读取输入的n
     scanf("%d", &n);
+    // 遍历2到n，找出所有的素数对
     for (int i = 2; i <= n; i++)
     {
+        // 如果i和i+2都是素数，那么它们就是一个素数对
         if(!Prime[i] && !Prime[i + 2])
         {
             printf("%d %d\n", i, i + 2);
         }
     }
+    // 释放内存
     free(Prime);
     return 0;
 }

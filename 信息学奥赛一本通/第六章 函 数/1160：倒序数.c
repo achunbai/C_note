@@ -17,47 +17,60 @@
 【输出样例】
 321
 */
-
-
-
-
-// 下面的都不对，先放置在这里
-/*
-// 如果不用递归，则直接以字符形式读入整数，然后逆序输出即可
 #include <stdio.h>
-#include <string.h>
+
+// 循环版本，用于计算倒序数
+int ReverseNum(int num)
+{
+    int ReversedNum = 0;
+    // 当num不为0时，继续循环
+    while (num)
+    {
+        // 将num的最后一位添加到ReversedNum的末尾
+        ReversedNum = ReversedNum * 10 + num % 10;
+        // 去掉num的最后一位
+        num /= 10;
+    }
+    return ReversedNum;
+}
+
+// 递归版本1，用于计算倒序数
+int ReverseNumRecursive(int num, int ReversedNum)
+{
+    // 当num为0时，返回ReversedNum
+    if(num == 0)
+    {
+        return ReversedNum;
+    }
+    else
+    {
+        // 将num的最后一位添加到ReversedNum的末尾，然后去掉num的最后一位
+        return ReverseNumRecursive(num / 10, ReversedNum * 10 + num % 10);
+    }
+}
+
+// 递归版本2，直接打印倒序数
+void ReverseNumRecursive2(int num)
+{
+    // 打印num的最后一位
+    printf("%d", num % 10);
+    // 如果num的位数大于1，继续递归
+    if (num >= 10)
+    {
+        ReverseNumRecursive2(num / 10);
+    }
+}
 
 int main()
 {
-	char str[1001];
-	fgets(str, 1001, stdin);
-	int len = strlen(str) - 2;
-	for (int i = len; i >= 0 ; i--)
-	{
-		printf("%c", str[i]);
-	}
-	return 0;
+    int Num, ReversedNum;
+    // 输入一个数字
+    scanf("%d", &Num);
+    // 计算倒序数
+    ReversedNum = ReverseNum(Num);
+    // 打印倒序数
+    printf("%d\n", ReversedNum);
+    return 0;
 }
-*/
-/*
-#include <stdio.h>
-
-int main()
-{
-	char str[1001], *end = str;
-	fgets(str, 1001, stdin);
-	while (*end != '\0' && *end != '\n')
-	{
-		end++;
-	}
-	end--;
-	while ( end >= str)
-	{
-		printf("%c", *end);
-		end--;
-	}
-	return 0;
-}
-*/
 
 

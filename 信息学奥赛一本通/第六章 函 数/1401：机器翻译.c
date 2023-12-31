@@ -106,37 +106,53 @@ int main()
 #include <stdio.h>
 #include <stdlib.h>
 
+/*
+实现一个简单的循环缓存策略，当内存满时，新的单词会替换掉最早进入内存的单词。
+通过一个索引（index）引指向内存中的下一个要被替换的单词。
+每次新的单词进入内存时，索引就会向前移动一位。
+*/
+
 int main()
 {
-    int m, n, tmp, idx = 0, len = 0, *mem, cnt = 0;
-    scanf("%d %d", &m, &n); // 读取内存大小和单词数量
-    mem = (int*)calloc(m, sizeof(int)); // 分配内存空间
-    for (int i = 0; i < n; i++) // 遍历每个单词
+    int m, n, tmp, index = 0, memcnt = 0, *mem, cnt = 0;
+    scanf("%d %d", &m, &n); // 读取内存容量和文章长度
+
+    mem = (int*)calloc(m, sizeof(int)); // 分配内存
+
+    for (int i = 0; i < n; i++) // 遍历文章中的每个单词
     {
         int j;
-        scanf("%d", &tmp); // 读取单词
-        for (j = idx; j < idx+len; j++) // 在内存中查找单词
+        scanf("%d", &tmp); // 读取一个单词
+
+        // 在内存中查找这个单词
+        for (j = index; j < memcnt + index; j++)
         {
-            if(mem[j%m] == tmp) // 如果找到单词，跳出循环
+            if(mem[j % m] == tmp) // 如果找到了这个单词
             {
                 break;
             }
         }
-        if(j == idx+len) // 如果没有找到单词
+
+        // 如果没有在内存中找到这个单词
+        if(j == index + memcnt)
         {
-            mem[(idx+len)%m] = tmp; // 将单词存入内存
-            cnt++; // 增加查询次数
-            if(len == m) // 如果内存已满
+            mem[(index + memcnt) % m] = tmp; // 将这个单词存入内存
+            cnt++; // 增加查词典的次数
+
+            if(memcnt == m) // 如果内存已满
             {
-                idx = (idx + 1) % m; // 移动内存开始位置
+                index = (index + 1) % m; // 移动索引
             }
-            else
+            else // 如果内存未满
             {
-                len++; // 增加内存中的单词数量
+                memcnt++; // 增加内存中的单词数
             }
         }
     }
-    printf("%d\n", cnt); // 输出查询次数
-    free(mem); // 释放内存空间
+
+    printf("%d\n", cnt); // 输出查词典的次数
+
+    free(mem); // 释放内存
+
     return 0;
 }

@@ -50,7 +50,7 @@ int main()
     // 读取输入
     scanf("%d", &n);
     // 输出斐波那契数列的第n项
-    printf("%lld\n", fibonacci(n));
+    printf("%lld\n", fibonacci(n - 1));
     return 0;
 }
 

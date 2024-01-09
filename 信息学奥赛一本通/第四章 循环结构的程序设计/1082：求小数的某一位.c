@@ -40,6 +40,14 @@ int main()
 */
 
 // 代码2.0 通过全部
+// float精度为小数点后6-7位
+// double精度为小数点后15-16位
+// 上面的版本因为小数点后精度不够，所以会出现误差
+// 本题本质为数据类型的缺陷，需要使用数学思维进行思考
+// 本题的思路是：利用同余定理，求a/b的小数部分
+// 先求a/b的余数，再将余数乘以10，作为下一次循环的被除数
+// 这样可以将a/b的小数部分一位一位求出来
+// 最后循环n次后，a/b的小数部分就是a/b的商
 #include <stdio.h>
 
 int main()
@@ -56,3 +64,29 @@ int main()
 	printf("%d", result);
 	return 0;
 }
+
+/*
+课上C++示例代码
+#include<iostream>
+#include<cmath>
+using namespace std;
+
+int main() {
+	
+
+	int a, b;  cin >> a >> b;
+	int n; cin >> n;
+
+	for (int i = 1; i <= n; i++) {
+		a %= b;
+		a *= 10;
+	}
+	cout << a / b << endl;
+	//float   精度6-7位
+	//double  精度15-16位   
+	//double a, b;  cin >> a >> b;
+	//int n; cin >> n;
+	//cout << int(a / b * pow(10, n)) % 10 << endl;
+	return 0;
+}
+*/

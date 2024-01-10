@@ -95,3 +95,38 @@ int main()
     }
     return 0;
 }
+
+/*
+// 课上C++代码
+#include<iostream>
+using namespace std;
+const int N = 1e2 + 10;
+int a[N][N]; // 定义一个二维数组a
+
+int main() {
+    int n; cin >> n; // 从标准输入读取一个整数n
+    int l=1, r=n, x=0; // 定义三个整数l、r和x，分别表示当前层的左上角和右下角的坐标，以及当前填入的数
+
+    while (x<n*n) { // 当x小于n*n时，继续填数
+        //1.向下走，模拟行的变化
+        for (int i = l; i <= r; i++) a[i][r] = ++x; // 从上到下填数
+        //2.向左走，模拟列的变化
+        for (int i = r - 1; i >= l; i--) a[r][i] = ++x; // 从右到左填数
+        //3.向上走，模拟行的变化
+        for (int i = r - 1; i >= l; i--) a[i][l] = ++x; // 从下到上填数
+        //4.向右走，模拟列的变化
+        for (int i = l + 1; i <= r - 1; i++) a[l][i] = ++x; // 从左到右填数
+        l++, r--; // 进入下一层
+    }
+
+    // 打印填好的数
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++) {
+            cout << a[i][j] << " "; // 打印每一行的数
+        }
+        cout << endl; // 每打印完一行，就打印一个换行符
+    }
+    
+    return 0;
+}
+*/

@@ -22,11 +22,7 @@ n×m
 试编程读入一稀疏矩阵，转换成简记形式，并输出。
 
 【输入】
-第一行为n
-和m
-,n
-为行数，m
-为列数；
+第一行为n和m,n为行数，m为列数；
 
 接下来是一个n×m
 的矩阵，矩阵中每个正整数小于1000
@@ -50,24 +46,29 @@ n×m
 
 int main()
 {
-	int arr[20][20], n, m;
-	scanf("%d%d", &n, &m);
-	for (int i = 0; i < n; i++)
-	{
-		for (int j = 0; j < m; j++)
-		{
-			scanf("%d", &arr[i][j]);
-		}
-	}
-	for (int i = 0; i < n; i++)
-	{
-		for (int j = 0; j < m; j++)
-		{
-			if (arr[i][j])
-			{
-				printf("%d %d %d\n", i + 1, j + 1, arr[i][j]);
-			}
-		}
-	}
-	return 0;
+    int arr[20][20], n, m; // 定义一个二维数组arr和两个整数n和m
+
+    scanf("%d%d", &n, &m); // 从标准输入读取两个整数n和m
+
+    // 使用两层循环来读取矩阵的每一项
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            scanf("%d", &arr[i][j]); // 从标准输入读取矩阵的每一项
+        }
+    }
+
+    // 使用两层循环来打印稀疏矩阵的非零项
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            if (arr[i][j]) // 如果矩阵的这一项不为零
+            {
+                printf("%d %d %d\n", i + 1, j + 1, arr[i][j]); // 打印矩阵的行号、列号和值，行号和列号从1开始计数
+            }
+        }
+    }
+    return 0;
 }

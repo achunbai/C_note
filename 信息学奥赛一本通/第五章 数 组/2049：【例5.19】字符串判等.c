@@ -68,3 +68,32 @@ int main()
     }
     return 0;
 }
+
+/*
+// 课上C++代码
+#include<iostream>
+#include<string>
+using namespace std;
+
+void tolower(string& s) {
+
+	for (auto& c : s) {
+		if (c >= 'A' && c <= 'Z') c += 32;
+	}
+}
+int main() {
+	
+	string s1, s2;
+	getline(cin, s1);
+	getline(cin, s2);
+	tolower(s1);
+	tolower(s2);
+	string str1, str2;
+	for (auto c : s1) if (c != ' ') str1 += c;
+	for (auto c : s2) if (c != ' ') str2 += c;
+
+	if (str1 == str2) cout << "YES";
+	else cout << "NO";
+	return 0;
+}
+*/

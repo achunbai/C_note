@@ -42,3 +42,38 @@ int main()
 	printf(str);
 	return 0;
 }
+/*
+// 课上C++代码
+
+#include<iostream>
+#include<cstring>
+#include<string>
+using namespace std;
+const int N = 2e2 + 10;
+//char ch[N];
+//void test01() {
+//	gets_s(ch);
+//	char A, B;
+//	cin >> A >> B;
+//	for (int i = 0; i < strlen(ch); i++) {
+//		if (ch[i] == A) ch[i] = B;
+//	}
+//	cout << ch << endl;
+//}
+int main() {
+	
+	string s;
+	getline(cin, s);
+	char A, B;   cin >> A >> B;
+
+	//for (int i = 0; i < s.size(); i++) {
+	//	if (s[i] == A) s[i] = B;
+	//}
+	//C++11 特性  for range  
+	for (auto& c : s) {//引用类型type& b=a,相当于给a起了一个别名叫b
+		if (c == A) c = B;
+	}
+	cout << s << endl;
+	return 0;
+}
+*/

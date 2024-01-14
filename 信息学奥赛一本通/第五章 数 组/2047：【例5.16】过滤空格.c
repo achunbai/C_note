@@ -49,3 +49,50 @@ int main()
     printf(str);
     return 0;
 }
+
+/*
+// 课上C++代码
+#include<iostream>
+#include<cstring>
+#include<string>
+using namespace std;
+const int N = 2e2 + 10;
+void test01() {
+	string s;
+	while (cin >> s) {
+		cout << s << " ";
+	}
+}
+void test02() {
+	string s;
+	getline(cin, s);
+
+	for (int i = 0; i < s.size(); i++) {
+		if (s[i] != ' ') {//'A'=65    'a'=97    ' '=32    '0'=48   
+			cout << s[i];
+		}
+		else if (s[i] == ' ' && i >= 1 && s[i - 1] != ' ') {
+			cout << s[i];
+		}
+	}
+}
+int main() {
+
+	string s;
+	getline(cin, s);
+	bool flag = false;
+	for (int i = 0; i < s.size(); i++) {
+		
+		if (s[i] != ' ') {//'A'=65    'a'=97    ' '=32    '0'=48   
+			cout << s[i];
+			flag = true;
+		}
+		else if (s[i] == ' '&& flag==true) {
+			cout << s[i];
+			flag = false;
+		}
+	}
+	
+	return 0;
+}
+*/

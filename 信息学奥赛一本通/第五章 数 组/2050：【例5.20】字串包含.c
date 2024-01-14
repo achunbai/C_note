@@ -61,3 +61,46 @@ int main()
     }
     return 0;  // 函数返回0，表示程序正常结束
 }
+
+/*
+// 课上C++代码
+#include<iostream>
+#include<string>
+using namespace std;
+
+int test02() {
+	string s1, s2;
+	cin >> s1 >> s2;
+
+	if (s1.length() < s2.length()) {
+		swap(s1, s2);
+	}
+
+	for (int i = 0; i < s1.size(); i++) {
+		if (s1.find(s2) != -1) {
+			cout << "true" << endl;
+			return 0;
+		}
+		char t = s1[0];
+		s1.erase(0, 1);
+		s1 += t;
+		//s1.push_back(t);//从数组尾部插入元素
+	}
+	cout << "false";
+}
+int main() {
+
+	string s1, s2;
+	cin >> s1 >> s2;
+	//线性模拟环（核心：首尾相连，循环模拟 或者  将原序列扩增为原来2倍）
+	if (s1.length() < s2.length()) {
+		swap(s1, s2);
+	}
+	s1 += s1;
+	if (s1.find(s2) != -1) {
+		cout << "true" << endl;
+	}
+	else cout << "false" << endl;
+	return 0;
+}
+*/
